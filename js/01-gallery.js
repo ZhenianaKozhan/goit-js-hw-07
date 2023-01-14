@@ -23,3 +23,17 @@ function creatPicCardsMarkup(params) {
     .join('');
 }
 
+galleryContainer.addEventListener('click', onGalleryContainer)
+
+function onGalleryContainer(evt) {
+    evt.preventDefault();
+    const isGalleryLinkEl = evt.target.classList.contains('gallery__image')
+    if (!isGalleryLinkEl) {
+        return;
+    }
+    
+    const originalPic = evt.target.dataset.source;
+    console.log(originalPic);
+    
+}
+// клік тільки по тегу <a>, всі інші області ігноруються.
