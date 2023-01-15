@@ -5,11 +5,7 @@ const galleryContainer = document.querySelector('.gallery');
 const galleryMarkup = creatPicCardsMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
-galleryContainer.addEventListener('click', onGalleryContainer)
-
-
-
-
+galleryContainer.addEventListener('click', onGalleryContainer);
 
 function creatPicCardsMarkup(params) {
     return galleryItems.map(({ preview, original, description }) => {
