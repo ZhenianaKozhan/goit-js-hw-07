@@ -5,6 +5,11 @@ const galleryContainer = document.querySelector('.gallery');
 const galleryMarkup = creatPicCardsMarkup(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
+galleryContainer.addEventListener('click', onGalleryContainer)
+
+
+
+
 
 function creatPicCardsMarkup(params) {
     return galleryItems.map(({ preview, original, description }) => {
@@ -23,17 +28,19 @@ function creatPicCardsMarkup(params) {
     .join('');
 }
 
-galleryContainer.addEventListener('click', onGalleryContainer)
-
 function onGalleryContainer(evt) {
     evt.preventDefault();
     const isGalleryLinkEl = evt.target.classList.contains('gallery__image')
     if (!isGalleryLinkEl) {
         return;
     }
-    
+
     const originalPic = evt.target.dataset.source;
-    console.log(originalPic);
-    
+    creatLightbox(originalPic);
 }
-// клік тільки по тегу <a>, всі інші області ігноруються.
+
+function creatLightbox(pic) {
+    const instance = basicLightbox.create(`
+		<img src="${pic}">
+	`).show()
+}
